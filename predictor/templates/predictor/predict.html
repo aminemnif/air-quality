@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Emissions Prediction</title>
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External CSS Libraries for Animations and Styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;  /* Center horizontally */
+    align-items: center;
+            flex-direction: column;
+            background: url("{% static 'predictor/futuristic-cityscapes-with-neon-lights-and-cyberpunk-vibes-free-photo.jpg' %}") no-repeat center center;
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center center; /* Centers the image */
+        }
+
+        /* Cloud container */
+        .clouds {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: cloudMove 20s linear infinite;
+        }
+
+        .cloud1 {
+            width: 400px;
+            height: 200px;
+            top: 10%;
+            left: -300px;
+            animation-duration: 30s;
+        }
+
+        .cloud2 {
+            width: 300px;
+            height: 160px;
+            top: 20%;
+            left: -250px;
+            animation-duration: 40s;
+        }
+
+        .cloud3 {
+            width: 500px;
+            height: 250px;
+            top: 30%;
+            left: -350px;
+            animation-duration: 50s;
+        }
+
+        .cloud4 {
+            width: 350px;
+            height: 180px;
+            top: 40%;
+            left: -280px;
+            animation-duration: 60s;
+        }
+
+        @keyframes cloudMove {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Main container */
+        .container {
+            background: rgba(0, 0, 0, 0.6); /* Darkened container for readability */
+            padding: 40px;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02); /* Subtle scaling effect */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #00d4ff; /* Soft cyan */
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-size: 1.3rem;
+            color: #fff; /* White labels */
+            margin-bottom: 12px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 2px solid #00d4ff;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1.1rem;
+            transition: border 0.3s ease, background 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #00d4ff;
+            outline: none;
+            background: rgba(255, 255, 255, 0.3); /* Highlight focus input */
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #00d4ff, #0097b8); /* Gradient for button */
+            font-size: 1.3rem;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, #0097b8, #00d4ff);
+            transform: translateY(-2px);
+        }
+
+        /* Prediction result styling */
+        .prediction {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 15px;
+            border: 2px solid #00d4ff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .prediction h3 {
+            color: #00d4ff; /* Same color as in the header */
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cloud elements -->
+    <div class="clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1>CO2 Emissions Prediction</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="fuel_city">Fuel City:</label>
+            <input type="text" name="fuel_city" id="fuel_city" value="{{ fuel_city }}" required><br>
+
+            <label for="fuel_hwy">Fuel Highway:</label>
+            <input type="text" name="fuel_hwy" id="fuel_hwy" value="{{ fuel_hwy }}" required><br>
+
+            <label for="fuel_comb">Fuel Combined:</label>
+            <input type="text" name="fuel_comb" id="fuel_comb" value="{{ fuel_comb }}" required><br>
+
+            <label for="fuel_mpg">Fuel MPG:</label>
+            <input type="text" name="fuel_mpg" id="fuel_mpg" value="{{ fuel_mpg }}" required><br>
+
+            <label for="vehicle_model">Vehicle Model:</label>
+            <input type="text" name="model" id="vehicle_model" value="{{ vehicle_model }}" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="prediction">
+                <h3>Predicted CO2 Emissions: {{ prediction }} g/km</h3>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
