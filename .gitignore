@@ -1,0 +1,37 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+venv/
+myenv/
+.env
+.env.*
+
+# Database
+*.sqlite3
+db.sqlite3-journal
+
+# Logs
+*.log
+
+# Static files
+staticfiles/
+
+# Media files
+media/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Django secret key or credentials
+secrets.json
+
+# Node modules (if using JavaScript dependencies)
+node_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
