@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('predictor.urls')),  # Include the predictor app URLs here
+    path('', include('home.urls')),  # Include the global home app here
+    path('amine/', include('predictor.urls')),  # Include the predictor app URLs here
 ]
