@@ -8,6 +8,7 @@ venv/
 myenv/
 .env
 .env.*
+DataEngEnv/
 
 # Database
 *.sqlite3
