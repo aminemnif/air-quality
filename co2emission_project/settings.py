@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'predictor',
     'bassem_regression_aqi_prediction',
+    'wafa_emissions_trend',
 ]
 
 MIDDLEWARE = [
