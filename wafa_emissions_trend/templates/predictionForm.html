@@ -2,32 +2,42 @@
 
 {% block form_content %}
 
+<h1 style="text-align: center; font-family: Arial, sans-serif; color: #00bfff; margin-bottom: 20px;">Pollutants Emissions Prediction</h1>
 
-<h1>CO2 Emissions Prediction</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <label for="fuel_city">Fuel City:</label>
-            <input type="text" name="fuel_city" id="fuel_city" value="{{ fuel_city }}" required><br>
+<form method="POST" style="margin: 0 auto; padding: 20px; max-width: 600px; border-radius: 10px; background-color: #333; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); font-family: Arial, sans-serif;">
+    {% csrf_token %}
+    
+    <div style="margin-bottom: 20px;">
+        {% for year in years %}
+            <label for="emissions_{{ year }}" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Emissions for {{ year }}:</label>
+            <input type="text" name="emissions_{{ year }}" id="emissions_{{ year }}" 
+                style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+                required>
+        {% endfor %}
+    </div>
 
-            <label for="fuel_hwy">Fuel Highway:</label>
-            <input type="text" name="fuel_hwy" id="fuel_hwy" value="{{ fuel_hwy }}" required><br>
+    <div style="margin-bottom: 20px;">
+        <label for="num_years" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Number of Years to Predict:</label>
+        <input type="text" name="num_years" id="num_years" 
+            style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+            required>
+    </div>
 
-            <label for="fuel_comb">Fuel Combined:</label>
-            <input type="text" name="fuel_comb" id="fuel_comb" value="{{ fuel_comb }}" required><br>
+    <button type="submit" 
+        style="width: 100%; background-color: #00bfff; color: white; font-size: 16px; padding: 10px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+        Predict
+    </button>
+</form>
 
-            <label for="fuel_mpg">Fuel MPG:</label>
-            <input type="text" name="fuel_mpg" id="fuel_mpg" value="{{ fuel_mpg }}" required><br>
-
-            <label for="vehicle_model">Vehicle Model:</label>
-            <input type="text" name="model" id="vehicle_model" value="{{ vehicle_model }}" required><br>
-
-            <button type="submit">Predict</button>
-        </form>
-
-        {% if prediction %}
-            <div class="prediction">
-                <h3>Predicted CO2 Emissions: {{ prediction }} g/km</h3>
-            </div>
-        {% endif %}
+{% if predictions %}
+    <div style="background-color: #444; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); margin-top: 20px; font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto;">
+        <h3 style="font-size: 1.5em; color: #00bfff; margin-bottom: 10px; text-align: center;">Predicted Emissions:</h3>
+        <ul style="list-style-type: none; padding: 0; margin: 0; color: #ffffff;">
+            {% for year, prediction in predictions.items %}
+                <li style="font-size: 1.2em; color: #ffffff; margin-bottom: 5px; text-align: center;">Year {{ year }}: {{ prediction|floatformat:2 }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 
 {% endblock %}
