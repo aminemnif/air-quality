@@ -23,4 +23,5 @@ urlpatterns = [
     path('regression_amine/', include('predictor.urls')),  # Include the predictor app URLs here
     path('regression_bassem/', include('bassem_regression_aqi_prediction.urls')),  # Include the predictor app URLs here
     path('regression_wafa/', include('wafa_emissions_trend.urls')),
+    path('regression_bechir/', include('respiratory_cases.urls')),
 ]
