@@ -3,9 +3,9 @@ import joblib
 import numpy as np
 
 # Load the trained model and scalers
-model = joblib.load("C:/Users/ASUS/air-quality/wafa_emissions_trend/MLModels/xgboost_model.pkl")
-scaler_features = joblib.load("C:/Users/ASUS/air-quality/wafa_emissions_trend/MLModels/scaler_features.pkl")
-scaler_target = joblib.load("C:/Users/ASUS/air-quality/wafa_emissions_trend/MLModels/scaler_target.pkl")
+model = joblib.load("wafa_emissions_trend/MLModels/xgboost_model.pkl")
+scaler_features = joblib.load("wafa_emissions_trend/MLModels/scaler_features.pkl")
+scaler_target = joblib.load("wafa_emissions_trend/MLModels/scaler_target.pkl")
 
 def predict(request):
     predictions = None
