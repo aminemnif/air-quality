@@ -83,4 +83,4 @@ def predict_co2(request):
     return render(request, 'predictor/predict.html')
 
 def home(request):
-    return render(request, 'predictor/home.html')  # Update the path to 'predictor/home.html'
+    return render(request, 'home/home.html')  # Update the path to 'predictor/home.html'

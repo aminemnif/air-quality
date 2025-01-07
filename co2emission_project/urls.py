@@ -19,5 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('predictor.urls')),  # Include the predictor app URLs here
+    path('', include('home.urls')),  # Include the global home app here
+    path('regression_amine/', include('predictor.urls')),  # Include the predictor app URLs here
+    path('regression_bassem/', include('bassem_regression_aqi_prediction.urls')),  # Include the predictor app URLs here
+    path('regression_wafa/', include('wafa_emissions_trend.urls')),
 ]
