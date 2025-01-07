@@ -34,7 +34,12 @@
     <input type="text" name="toluene" id="toluene" value="{{ toluene }}" required><br>
 
     <label for="city">City:</label>
-    <input type="text" name="city" id="city" value="{{ city }}" required><br>
+    <select id="city" name="city" required>
+        <option value="" disabled selected>Select your city</option>
+        {% for city in cities %}
+            <option value="{{ city }}">{{ city }}</option>
+        {% endfor %}
+    </select><br>
 
     <button type="submit">Predict AQI</button>
 </form>

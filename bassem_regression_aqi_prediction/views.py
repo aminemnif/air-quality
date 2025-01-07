@@ -15,6 +15,13 @@ model = joblib.load(MODEL_PATH)
 # Log the model to confirm it loaded correctly
 print(f"Model loaded: {model}")
 
+CITIES = [
+    'Ahmedabad', 'Aizawl', 'Amaravati', 'Amritsar', 'Bengaluru',
+    'Bhopal', 'Brajrajnagar', 'Chandigarh', 'Chennai', 'Coimbatore',
+    'Delhi'
+]
+
+
 # Create your views here.
 def predict(request):
-    return render(request, 'predict.html')
+    return render(request, 'predict.html', {'cities': CITIES})
