@@ -207,32 +207,9 @@
 
     <!-- Main content -->
     <div class="container">
-        <h1>CO2 Emissions Prediction</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <label for="fuel_city">Fuel City:</label>
-            <input type="text" name="fuel_city" id="fuel_city" value="{{ fuel_city }}" required><br>
-
-            <label for="fuel_hwy">Fuel Highway:</label>
-            <input type="text" name="fuel_hwy" id="fuel_hwy" value="{{ fuel_hwy }}" required><br>
-
-            <label for="fuel_comb">Fuel Combined:</label>
-            <input type="text" name="fuel_comb" id="fuel_comb" value="{{ fuel_comb }}" required><br>
-
-            <label for="fuel_mpg">Fuel MPG:</label>
-            <input type="text" name="fuel_mpg" id="fuel_mpg" value="{{ fuel_mpg }}" required><br>
-
-            <label for="vehicle_model">Vehicle Model:</label>
-            <input type="text" name="model" id="vehicle_model" value="{{ vehicle_model }}" required><br>
-
-            <button type="submit">Predict</button>
-        </form>
-
-        {% if prediction %}
-            <div class="prediction">
-                <h3>Predicted CO2 Emissions: {{ prediction }} g/km</h3>
-            </div>
-        {% endif %}
+        {% block form_content %}
+        <!-- Content will be injected here -->
+        {% endblock %}
     </div>
 
 </body>

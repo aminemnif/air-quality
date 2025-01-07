@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'predictor',
+    'bassem_regression_aqi_prediction',
+    'wafa_emissions_trend',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # Optionally, you can add global template paths here if needed
+            BASE_DIR / "home" / "templates",  # Add your templates directory here
         ],
         'APP_DIRS': True,  # This tells Django to look for templates in app directories
         'OPTIONS': {
