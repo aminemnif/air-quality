@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'predictor',
     'bassem_regression_aqi_prediction',
     'wafa_emissions_trend',
+    'hajer_regression',
 ]
 
 MIDDLEWARE = [

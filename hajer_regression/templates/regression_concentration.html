@@ -1,0 +1,81 @@
+{% extends 'base/base_form.html' %}
+
+{% block form_content %}
+
+<h1 style="text-align: center; font-family: Arial, sans-serif; color: #00bfff; margin-bottom: 20px;">Pollutants Concentration Prediction</h1>
+
+<form method="POST" style="margin: 0 auto; padding: 20px; max-width: 600px; border-radius: 10px; background-color: #333; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); font-family: Arial, sans-serif;">
+    {% csrf_token %}
+    
+    <!-- Station Type Dropdown -->
+    <div style="margin-bottom: 20px;">
+        <label for="type_of_station" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Type of Station:</label>
+        <select name="type_of_station" id="type_of_station" 
+            style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+            required>
+            {% for station in stations %}
+                <option value="{{ station }}">{{ station }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Pollutant Type Dropdown -->
+    <div style="margin-bottom: 20px;">
+        <label for="type_of_pollutant" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Type of Pollutant:</label>
+        <select name="type_of_pollutant" id="type_of_pollutant" 
+            style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+            required>
+            {% for pollutant in pollutants %}
+                <option value="{{ pollutant }}">{{ pollutant }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Longitude Input with Placeholder -->
+    <div style="margin-bottom: 20px;">
+        <label for="longitude" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Longitude:</label>
+        <input type="text" name="longitude" id="longitude" 
+            style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+            placeholder="Enter Longitude (e.g., 1.0)" required>
+    </div>
+
+    <!-- Latitude Input with Placeholder -->
+    <div style="margin-bottom: 20px;">
+        <label for="latitude" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Latitude:</label>
+        <input type="text" name="latitude" id="latitude" 
+            style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+            placeholder="Enter Latitude (e.g., 20.5937)" required>
+    </div>
+
+    <!-- Population Input with Placeholder -->
+    <div style="margin-bottom: 20px;">
+        <label for="population" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Population:</label>
+        <input type="text" name="population" id="population" 
+            style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+            placeholder="Enter Population (e.g., 100000)" required>
+    </div>
+
+    <!-- Year Input with Placeholder -->
+    <div style="margin-bottom: 20px;">
+        <label for="year" style="display: block; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Year:</label>
+        <input type="text" name="year" id="year" 
+            style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #00bfff; border-radius: 5px; margin-bottom: 15px; background-color: #444; color: #ffffff;" 
+            placeholder="Enter Year (e.g., 2022)" required>
+    </div>
+
+    <button type="submit" 
+        style="width: 100%; background-color: #00bfff; color: white; font-size: 16px; padding: 10px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+        Predict
+    </button>
+</form>
+
+{% if predictions %}
+    <div style="background-color: #444; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); margin-top: 20px; font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto;">
+        <h3 style="font-size: 1.5em; color: #00bfff; margin-bottom: 10px; text-align: center;">Predicted Pollutants Concentration:</h3>
+        <p style="font-size: 1.2em; color: #ffffff; text-align: center;">{{ predictions.pollutants_concentration|floatformat:2 }} µg/m³</p>
+        <p style="font-size: 1em; color: #ffffff; text-align: center;">This prediction is for the pollutant concentration yearly.</p>
+    </div>
+{% endif %}
+
+{% endblock %}
+    
