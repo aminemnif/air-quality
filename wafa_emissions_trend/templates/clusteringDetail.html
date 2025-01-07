@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Analysis Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2, h3 {
+            color: #00bfff;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section p {
+            margin: 10px 0;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #00bfff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #007acc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Clustering Analysis of Emission Patterns</h1>
+
+        <div class="section">
+            <h2>Overview</h2>
+            <p>
+                This project involves identifying emission patterns across states and sectors in the USA using clustering algorithms.
+                The analysis provides actionable insights for policymakers to address key environmental issues.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Data Used</h2>
+            <p>The analysis was conducted using publicly available EPA datasets containing detailed emission data for various pollutants, states, and sectors.</p>
+            <ul>
+                <li><strong>Timeframe:</strong> 2002 to 2022</li>
+                <li><strong>Pollutants:</strong> CO2, VOCs, PM2.5, PM10, and more</li>
+                <li><strong>Sectors:</strong> On-road sources, industrial emissions, wildfires, and others</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Methods</h2>
+            <p>The project employed clustering techniques to identify patterns:</p>
+            <ul>
+                <li><strong>K-Means Clustering:</strong> Used to group states and sectors based on emission similarity.</li>
+                <li><strong>Agglomerative Clustering:</strong> Provided hierarchical insights into relationships between sectors and states.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Findings</h2>
+            <p>The analysis revealed the following key insights:</p>
+            <ul>
+                <li>Texas exhibited high emissions from on-road sources, making it a priority for intervention.</li>
+                <li>California’s wildfire emissions significantly impacted overall air quality.</li>
+                <li>Clusters highlighted regional similarities in industrial emissions and their contributors.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Impact</h2>
+            <p>
+                The results of this analysis enable policymakers to prioritize sectors and regions for targeted mitigation efforts,
+                promoting cleaner air and a sustainable environment.
+            </p>
+        </div>
+
+        <div class="button-container">
+            <a href="{% url 'home' %}" class="back-button">Go Back</a>
+        </div>
+    </div>
+
+</body>
+</html>
