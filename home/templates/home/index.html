@@ -234,7 +234,11 @@
         <p>Leverage advanced AI models to predict and understand air quality and its impact on your health.</p>
     </div>
 
-    
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+        <h2 style="font-family: Arial, sans-serif; font-size: 2.5em; font-weight: bold; color: #00bfff; text-transform: uppercase; letter-spacing: 2px;">
+            Our Models
+        </h2>
+    </div>
 
     <div class="sections">
         <div class="section-card animate__animated animate__fadeInLeft">
@@ -270,7 +274,28 @@
         </div>
     </div>
 
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+        <h2 style="font-family: Arial, sans-serif; font-size: 2.5em; font-weight: bold; color: #00bfff; text-transform: uppercase; letter-spacing: 2px;">
+            Our Projects
+        </h2>
+    </div>
 
+    <div class="sections">
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Identifying Emission Patterns by state and sector in the USA using clustering algorithms</h3>
+            <p>Analyzed emission patterns across states and sectors using clustering algorithms. Key findings include high emissions from on-road sources in Texas and wildfire impacts in California, supporting targeted interventions and policy-making.</p>
+            <a href="{% url 'clustering_detail' %}">Explore now</a>
+
+        </div>
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Exploring the association between state, sector, and different pollutants in the USA using Association rules </h3>
+            <p>Used association rules to uncover links between pollutants and sectors, aiding in identifying key emission contributors for targeted mitigation.</p>
+            <a href="{% url 'association_detail' %}">Explore now</a>
+        </div>
+    </div>
 
     <div class="info-section">
         <div class="info-column animate__animated animate__fadeInLeft">
