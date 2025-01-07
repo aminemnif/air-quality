@@ -96,3 +96,8 @@ def predict(request):
 
 
 
+def clustering_detail(request):
+    return render(request, 'clusteringDetail.html')
+
+def association_detail(request):
+    return render(request, 'associationDetail.html')

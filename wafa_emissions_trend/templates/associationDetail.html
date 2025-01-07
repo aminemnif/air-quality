@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Association Rules - Detailed Report</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+        }
+        a.back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            background: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a.back-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Association Rules Analysis</h1>
+        <h2>Key Findings</h2>
+        <p>Using the Apriori algorithm, we identified significant relationships between pollutants and sectors, which provide critical insights into emission patterns:</p>
+        <ul>
+            <li>VOC and PM25-PRI frequently co-occur with PM10-PRI (confidence: 100%).</li>
+            <li>Organic Carbon and PM25-PRI are strong precursors to PM10 (lift: 1.88).</li>
+            <li>PM25-PRI, PM10-PRI, NOX, and VOC reliably lead to increased CO levels.</li>
+        </ul>
+        <h3>Data Preparation</h3>
+        <p>The EPA dataset was prepared by categorizing emissions into "High" and "Low" based on median thresholds and formatting data for frequent itemset generation.</p>
+        <h3>Visualization</h3>
+        <p>Network graphs and heatmaps highlighted pollutant relationships, with PM10 and VOC playing central roles in emissions.</p>
+        <h3>Conclusion</h3>
+        <p>These insights help policymakers target key pollutants, especially PM10 and VOC, to improve air quality.</p>
+        <a href="{% url 'home' %}" class="back-button">Go Back</a>
+    </div>
+</body>
+</html>
