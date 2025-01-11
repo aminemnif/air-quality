@@ -1,0 +1,27 @@
+{% extends 'base/base_form.html' %}
+
+{% block form_content %}
+
+<h1>Solar Radiation Prediction</h1>
+<form method="POST">
+    {% csrf_token %}
+
+    <label for="temperature">Temperature (°C):</label>
+    <input type="text" name="temperature" id="temperature" value="{{ temperature }}" required><br>
+
+    <label for="pressure">Pressure (hPa):</label>
+    <input type="text" name="pressure" id="pressure" value="{{ pressure }}" required><br>
+
+    <label for="wind_direction">Wind Direction (Degrees):</label>
+    <input type="text" name="wind_direction" id="wind_direction" value="{{ wind_direction }}" required><br>
+
+    <button type="submit">Predict Solar Radiation</button>
+</form>
+
+{% if prediction %}
+    <div class="prediction">
+        <h3>Predicted Solar Radiation: {{ prediction }} W/m²</h3>
+    </div>
+{% endif %}
+
+{% endblock %}

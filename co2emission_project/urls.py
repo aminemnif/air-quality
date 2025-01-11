@@ -25,4 +25,5 @@ urlpatterns = [
     path('classification_bassem/', include('bassem_classification.urls')),
     path('regression_wafa/', include('wafa_emissions_trend.urls')),
     path('regression_concentration/', include('hajer_regression.urls')),
+    path('regression_taha/', include('taha_regression.urls')),  # Include the app's URLs
 ]
