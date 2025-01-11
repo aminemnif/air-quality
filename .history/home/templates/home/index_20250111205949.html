@@ -1,0 +1,340 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Air Quality Prediction Hub</title>
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External CSS Libraries for Animations and Styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: url("{% static 'futuristic-cityscapes-with-neon-lights-and-cyberpunk-vibes-free-photo.jpg' %}") no-repeat center center;
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center center; /* Centers the image */
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00d4ff;
+            font-size: 1.2em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00a0cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            color: #00d4ff;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin: 20px 0;
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            padding: 18px 35px;
+            font-size: 1.4em;
+            color: #fff;
+            background: #00d4ff;
+            border: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 15px rgba(0, 212, 255, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hero .cta-button:hover {
+            background: #0097b8;
+            box-shadow: 0 10px 25px rgba(0, 151, 184, 0.4);
+        }
+
+        /* Section Links */
+        .sections {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .section-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            margin: 20px;
+            padding: 30px 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, margin-top 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .section-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            margin-top: -10px;
+        }
+
+        .section-card i {
+            font-size: 4em;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .section-card h3 {
+            margin: 20px 0;
+            font-size: 1.6em;
+            color: #fff;
+        }
+
+        .section-card p {
+            color: #bbb;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .section-card a {
+            text-decoration: none;
+            color: #00d4ff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .section-card a:hover {
+            color: #0097b8;
+        }
+
+        /* Two-Column Information Section */
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin: 60px 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-column {
+            width: 45%;
+            margin-bottom: 20px;
+        }
+
+        .info-column h2 {
+            color: #00d4ff;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .info-column p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #bbb;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AI Quality Hub</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'predict_co2' %}">CO2 Emission</a></li>
+            <li><a href="/disease-prediction">Health Impact</a></li>
+            <li><a href="{% url 'predict_RS' %}">Respiratory Cases</a></li>
+            <li><a href="/car-model-prediction">Car Models</a></li>
+            <li><a href="/suggest-prediction">Suggest</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero animate__animated animate__fadeInUp">
+        <h1>Welcome to the AI Air Quality Prediction Hub</h1>
+        <p>Leverage advanced AI models to predict and understand air quality and its impact on your health.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+        <h2 style="font-family: Arial, sans-serif; font-size: 2.5em; font-weight: bold; color: #00bfff; text-transform: uppercase; letter-spacing: 2px;">
+            Our Models
+        </h2>
+    </div>
+
+    <div class="sections">
+        <div class="section-card animate__animated animate__fadeInLeft">
+            <i class="fas fa-cloud"></i>
+            <h3>CO2 Emission Prediction</h3>
+            <p>Predict the amount of CO2 emissions based on vehicle specifications and other contributing factors.</p>
+            <a href="{% url 'predict_co2' %}">Predict Now</a>
+        </div>
+        <div class="section-card animate__animated animate__fadeInUp">
+            <i class="fas fa-stethoscope"></i>
+            <h3>Health Impact Analysis</h3>
+            <p>Analyze the potential health impacts of poor air quality and discover preventive measures.</p>
+            <a href="/disease-prediction">predict now</a>
+        </div>
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Predict pollutants' concentration</h3>
+            <p>Empowering Environmental Decisions with Accurate Forecasts for Cleaner, Healthier Communities</p>
+            <a href="{% url 'regression_concentration' %}">predict now</a>
+        </div>
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Predict Air Quality Index (AQI)</h3>
+            <p>Predict the Air Quality Index (AQI) for a city based on pollutant levels. Gain insights into the current air quality and its potential impact on health and the environment.</p>
+            <a href="{% url 'predict_test_form' %}">predict now</a>
+        </div>
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Classify Air Quality Based on Pollutants</h3>
+            <p>Predict the severity of air quality based on various pollutant levels. The model categorizes the air quality into levels like Good, Moderate, or Severe, helping you understand the pollution impact.</p>
+            <a href="{% url 'classify_aqi_bucket' %}">predict now</a>
+        </div>
+
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Predict Pollutants' emissions over time</h3>
+            <p>Analyze the trends of various pollutants' emissions in a location of your choice, gaining insights into their patterns and potential environmental impact.</p>
+            <a href="{% url 'prediction_form' %}">predict now</a>
+        </div>
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <img src="{% static 'RS.webp' %}" alt="" style="width: 100px; height: auto;">
+
+
+            <h3>Predict Respiratory Cases</h3>
+            <p>
+                Predict respiratory health impacts using air quality data like AQI, PM10, and O3. 
+                Gain insights to enable proactive healthcare and environmental strategies for a healthier future.
+            </p>
+            <a href="{% url 'predict_RS' %}">predict now</a>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+        <h2 style="font-family: Arial, sans-serif; font-size: 2.5em; font-weight: bold; color: #00bfff; text-transform: uppercase; letter-spacing: 2px;">
+            Our Projects
+        </h2>
+    </div>
+
+    <div class="sections">
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Identifying Emission Patterns by state and sector in the USA using clustering algorithms</h3>
+            <p>Analyzed emission patterns across states and sectors using clustering algorithms. Key findings include high emissions from on-road sources in Texas and wildfire impacts in California, supporting targeted interventions and policy-making.</p>
+            <a href="{% url 'clustering_detail' %}">Explore now</a>
+
+        </div>
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Exploring the association between state, sector, and different pollutants in the USA using Association rules </h3>
+            <p>Used association rules to uncover links between pollutants and sectors, aiding in identifying key emission contributors for targeted mitigation.</p>
+            <a href="{% url 'association_detail' %}">Explore now</a>
+        </div>
+
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Exploring the association between state, sector, and different pollutants in the USA using Association rules </h3>
+            <p>Used association rules to uncover links between pollutants and sectors, aiding in identifying key emission contributors for targeted mitigation.</p>
+            <a href="{% url 'clustering_RS' %}">Explore now</a>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <div class="info-column animate__animated animate__fadeInLeft">
+            <h2>What is Air Quality?</h2>
+            <p>Air quality refers to the condition of the air in our environment, which can directly impact human health. Poor air quality is caused by pollutants such as particulate matter, carbon monoxide, sulfur dioxide, and ozone, which can harm the respiratory system, increase the risk of heart disease, and affect overall well-being. Understanding air quality helps us take preventive measures to protect ourselves and improve environmental conditions.</p>
+        </div>
+        <div class="info-column animate__animated animate__fadeInRight">
+            <h2>Why is Air Quality Important?</h2>
+            <p>Good air quality is essential for the health of humans, animals, and the environment. Prolonged exposure to air pollution can lead to chronic health conditions, including asthma, bronchitis, and cardiovascular disease. By monitoring and improving air quality, we can reduce these health risks and create a healthier, safer environment. Our AI-based predictions help you understand air quality trends and their potential health impacts.</p>
+        </div>
+    </div>
+</body>
+</html>

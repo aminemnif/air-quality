@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block form_content %}
+    {% if prediction %}
+        <div class="prediction">
+            <h3>Predicted Respiratory cases: {{ prediction }}</h3>
+            <button>
+                <a href="{% url 'predict_RS' %}">Predict again</a>
+            </button>
+        </div>
+    {% else %}
+        <h1>Respiratory Cases Prediction</h1>
+        <form method="POST">
+            {% if error %}
+                <div class="error">
+                    <p>{{ error }}</p>
+                </div>
+            {% endif %}
+
+            {% csrf_token %}
+            <label for="aqi">Air Quality Index (AQI):</label>
+            <input type="number" name="aqi" id="aqi" value="{{ aqi }}" required><br>
+
+            <label for="pm10">PM10 (µg/m³) - Particulate Matter <10µm:</label>
+            <input type="number" name="pm10" id="pm10" value="{{ pm10 }}" required><br>
+
+            <label for="o3">O3 (ppb) - Ozone:</label>
+            <input type="number" name="o3" id="o3" value="{{ o3 }}" required><br>
+
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" name="temperature" id="temperature" value="{{ temperature }}" required><br>
+
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" name="humidity" id="humidity" value="{{ humidity }}" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+    {% endif %}
+
+    
+
+{% endblock %}
