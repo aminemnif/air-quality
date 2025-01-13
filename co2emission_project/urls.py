@@ -26,4 +26,5 @@ urlpatterns = [
     path('regression_wafa/', include('wafa_emissions_trend.urls')),
     path('regression_concentration/', include('hajer_regression.urls')),
     path('regression_taha/', include('taha_regression.urls')),  # Include the app's URLs
+    path('regression_bechir/', include('respiratory_cases.urls')),
 ]

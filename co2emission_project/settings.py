@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'hajer_regression',
     'bassem_classification',
     'taha_regression',
+    'respiratory_cases',
 ]
 
 MIDDLEWARE = [

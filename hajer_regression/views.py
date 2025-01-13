@@ -3,8 +3,8 @@ import joblib
 import numpy as np
 
 # Load the trained model and scaler
-model = joblib.load("D:/ESPRIT/3eme Ai/semestre 1/Projet datawarehouse/DATA Science/hajer ayadi/supervised/random_forest_model_regression.pkl")  # Replace with your model path
-scaler_features = joblib.load("D:/ESPRIT/3eme Ai/semestre 1/Projet datawarehouse/DATA Science/hajer ayadi/supervised/scaler.pkl")  # Replace with your scaler path
+model = joblib.load("C:/Users/Taha/Desktop/hejer_models/random_forest_model_regression.pkl")  # Replace with your model path
+scaler_features = joblib.load("C:/Users/Taha/Desktop/hejer_models/scaler.pkl")  # Replace with your scaler path
 # Define mappings for encoding
 station_mapping = {
     'Background': 0, 'Industrial': 1, 'Residential and Commercial': 2, 'Rural': 3,

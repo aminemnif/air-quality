@@ -222,10 +222,7 @@
         <div class="logo">AI Quality Hub</div>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="{% url 'predict_co2' %}">CO2 Emission</a></li>
-            <li><a href="/disease-prediction">Health Impact</a></li>
-            <li><a href="/car-model-prediction">Car Models</a></li>
-            <li><a href="/suggest-prediction">Suggest</a></li>
+            <li><a href="https://app.powerbi.com/groups/me/reports/afa6611f-7cad-4e45-a9b6-8d731e871218/d2c373a8a93d4a891740?ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730&experience=power-bi&bookmarkGuid=f7ca0960ba12647ae028" target="_blank">Dashboards</a></li>
         </ul>
     </nav>
 
@@ -246,12 +243,6 @@
             <h3>CO2 Emission Prediction</h3>
             <p>Predict the amount of CO2 emissions based on vehicle specifications and other contributing factors.</p>
             <a href="{% url 'predict_co2' %}">Predict Now</a>
-        </div>
-        <div class="section-card animate__animated animate__fadeInUp">
-            <i class="fas fa-stethoscope"></i>
-            <h3>Health Impact Analysis</h3>
-            <p>Analyze the potential health impacts of poor air quality and discover preventive measures.</p>
-            <a href="/disease-prediction">predict now</a>
         </div>
         <div class="section-card animate__animated animate__fadeInRight">
             <i class="fas fa-car"></i>
@@ -280,6 +271,26 @@
             <p>Analyze the trends of various pollutants' emissions in a location of your choice, gaining insights into their patterns and potential environmental impact.</p>
             <a href="{% url 'prediction_form' %}">predict now</a>
         </div>
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <img src="{% static 'RS.webp' %}" alt="" style="width: 100px; height: auto;">
+
+
+            <h3>Predict Respiratory Cases</h3>
+            <p>
+                Predict respiratory health impacts using air quality data like AQI, PM10, and O3. 
+                Gain insights to enable proactive healthcare and environmental strategies for a healthier future.
+            </p>
+            <a href="{% url 'predict_RS' %}">predict now</a>
+            
+        </div>
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-sun"></i>
+            <h3>Predict Solar Irradiance</h3>
+            <p>Predict Solar Irradiance using weather conditions as features (Temperature, Wind Direction ...) to determine whether it's suitable for installing a solar panel or not.</p>
+            <a href="{% url 'predict_solar' %}">predict now</a>
+        </div>
     </div>
 
     <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
@@ -302,6 +313,17 @@
             <h3>Exploring the association between state, sector, and different pollutants in the USA using Association rules </h3>
             <p>Used association rules to uncover links between pollutants and sectors, aiding in identifying key emission contributors for targeted mitigation.</p>
             <a href="{% url 'association_detail' %}">Explore now</a>
+        </div>
+
+
+        <div class="section-card animate__animated animate__fadeInRight">
+            <i class="fas fa-cloud-sun"></i>
+            <h3>Clustering Analysis of Air Quality & Respiratory Health</h3>
+            <p>Leveraged clustering techniques to identify patterns in air quality data and respiratory health outcomes, providing insights for targeted public health interventions.</p>
+            <a href="{% url 'clustering_RS' %}">Explore now</a>
+        </div>
+ 
+        
         </div>
     </div>
 
